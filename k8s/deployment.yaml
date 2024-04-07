@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: socks5-proxy
+  namespace: proxy-socks5
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: socks5-proxy
+  template:
+    metadata:
+      labels:
+        app: socks5-proxy
+    spec:
+      containers:
+        - name: socks5-proxy
+          image: phenya28/socks5-proxy:1.0.0
+          ports:
+            - containerPort: 1080
+#          env:
+#            - name: PROXY_USER
+#              value: "user"
+#            - name: PROXY_PASSWORD
+#              value: "password"
+#            - name: PROXY_PORT
+#              value: "1080"

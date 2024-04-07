@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: socks5-proxy-service
+  namespace: proxy-socks5
+  annotations:
+    service.beta.kubernetes.io/do-loadbalancer-enable-proxy-protocol: "true"
+    service.beta.kubernetes.io/do-loadbalancer-name: "fra1-socks5-proxy-service"
+    service.beta.kubernetes.io/do-loadbalancer-sticky-sessions-type: "none"
+spec:
+  selector:
+    app: socks5-proxy
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 1080
+  type: LoadBalancer
