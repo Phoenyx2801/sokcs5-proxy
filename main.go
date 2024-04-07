@@ -33,6 +33,12 @@ func main() {
 		socks5conf.Rules = PermitDestAddrPattern(cfg.AllowedDestFqdn)
 	}
 
+	if cfg.User != "" && cfg.Password != "" {
+		socks5conf.Credentials = socks5.StaticCredentials{
+			cfg.User: cfg.Password,
+		}
+	}
+
 	server, err := socks5.New(socks5conf)
 	if err != nil {
 		log.Fatal(err)

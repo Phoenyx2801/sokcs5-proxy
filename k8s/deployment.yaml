@@ -15,13 +15,6 @@ spec:
     spec:
       containers:
         - name: socks5-proxy
-          image: phenya28/socks5-proxy:1.0.0
+          image: phenya28/socks5-proxy:1.0.1
           ports:
             - containerPort: 1080
-#          env:
-#            - name: PROXY_USER
-#              value: "user"
-#            - name: PROXY_PASSWORD
-#              value: "password"
-#            - name: PROXY_PORT
-#              value: "1080"
